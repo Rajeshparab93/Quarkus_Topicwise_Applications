@@ -1,0 +1,2 @@
+mvn quarkus:dev  run command in intellije terminal
+click on url and see the output on chrome

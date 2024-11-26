@@ -1,0 +1,94 @@
+Live_Score_Application Quarkus Project Code Flow Docs..............
+
+
+Sure! Below is an example of how to create a Quarkus application that fetches live cricket scores using a scheduled task. We'll use the `@Scheduled` annotation from Quarkus and `RestClient` for making HTTP requests.
+
+### Step 1: Set Up Dependencies
+
+In your `pom.xml`, add the following dependencies:
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-resteasy</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-scheduler</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-rest-client</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-resteasy-jackson</artifactId>
+    </dependency>
+</dependencies>
+```
+
+### Step 2: Create a Rest Client Interface
+
+Create an interface for your REST client to fetch live scores. Replace the URL with the actual API endpoint:
+
+```java
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+@Path("/live-scores")
+@Produces(MediaType.APPLICATION_JSON)
+public interface LiveScoreClient {
+    @GET
+    String getLiveScores();
+}
+```
+
+### Step 3: Implement the Scheduled Task
+
+Now, create a service class that uses the Rest Client to fetch live scores every 10 seconds:
+
+```java
+import io.quarkus.scheduler.Scheduled;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+
+@ApplicationScoped
+public class LiveScoreService {
+
+    @Inject
+    LiveScoreClient liveScoreClient;
+
+    @Scheduled(every = "10s") // Every 10 seconds
+    void fetchLiveScores() {
+        try {
+            String response = liveScoreClient.getLiveScores();
+            System.out.println("Live Score: " + response);
+        } catch (Exception e) {
+            System.err.println("Error fetching live scores: " + e.getMessage());
+        }
+    }
+}
+```
+
+### Step 4: Configure the Rest Client
+
+Now, configure the `RestClient` in your `application.properties`:
+
+```properties
+# Replace with the actual base URL of your API
+live-score-client/mp-rest/url=https://api.example.com
+```
+
+### Step 5: Run the Application
+
+You can now run your Quarkus application. The `fetchLiveScores` method will be executed every 10 seconds, fetching live scores from the specified API.
+
+### Note
+
+- Make sure to replace the API URL and handle any required authentication (e.g., API keys).
+- You might want to map the response to a specific model rather than printing the raw JSON, depending on the API's response structure.
+
+This setup should give you a solid foundation to build a live cricket score fetching service using Quarkus!

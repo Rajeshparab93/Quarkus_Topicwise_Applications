@@ -1,0 +1,49 @@
+Introduction to Quarkus	
+- Overview of Quarkus: What it is, why it’s important.
+- Installing and setting up Quarkus development environment.
+- Quarkus architecture and core concepts.
+- Building your first Quarkus application.
+- Running and testing a simple REST API.
+
+ 	 	 
+2	Developing with Quarkus	
+- Dependency Injection with CDI (Contexts and Dependency Injection).
+- Configuration management in Quarkus.
+- Working with RESTEasy for RESTful services.
+- Creating and consuming RESTful services.
+- Building and packaging Quarkus applications.
+
+ 	 	 
+3	Database Integration	
+-Setting up Quarkus with a relational database.
+- Using JPA and Hibernate ORM with Quarkus.
+- Panache: Simplifying your data access layer.
+- CRUD operations using Panache.
+- Managing transactions in Quarkus.
+- Converting DAO to DTO and vice versa.
+- Using Hibernate Validator extension.
+
+ 	 	 
+4	Quarkus Advanced Features	
+- MicroProfile RestClient in Quarkus.
+- Enabling CORS filter in Quarkus.
+- MicroProfile Fault Tolerance.
+- Configuration profiles in Quarkus.
+- How to use logging in Quarkus.
+- Handling exceptions in Quarkus.
+- Scheduling periodic tasks in Quarkus.
+- Configuring application.properties and application.yml files.
+
+ 	 	 
+5	Application Management and Monitoring	
+- Understanding Quarkus application initialization and termination.
+- Using MicroProfile Health in Quarkus.
+- Using MicroProfile Metrics in Quarkus.
+- Exploring Quarkus extensions and how to use them.
+- Best practices and performance optimization.
+ 	 
+6	Reactive Programming with Quarkus	
+- Introduction to reactive programming and why it matters.
+- Building reactive applications with Quarkus.
+- Using Mutiny: Quarkus’ reactive programming library.
+- Implementing reactive REST services.
